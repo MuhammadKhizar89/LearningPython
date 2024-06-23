@@ -47,3 +47,34 @@ if 2 in Marks:
 
 if "w" in "wq":
     print("Present");    
+
+print(Marks[0:4:2]); #staring,ending,skip
+
+list=[i*i for i in range(10) if i%2==0]
+print(list);
+
+list.append(5);
+print(list);
+list.sort();
+print(list);
+list.sort(reverse=True);
+print(list);
+list.pop();
+# print(list.index(0));
+# print(list);
+print(list.index(64)); # yani 64 kon sy index pr pra hy
+print(list.count(5));
+m=list;
+m[0]=32;
+print(list)
+# m make changes in list so we use
+m=list.copy();
+m[0]=2;
+print(list)
+list.insert(1,78)#1 index pr 78
+print(list)
+list.extend(m);
+print(list)
+k=list+m;
+print(k);
+print(list)
