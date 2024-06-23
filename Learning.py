@@ -101,3 +101,25 @@ GFG_list.append(2);
 print(GFG_list)
 GFG_tuple=tuple(GFG_list);
 print(GFG_tuple)
+
+# fString
+a="hello"
+b="world"
+print(f"({a} hehe {b})");
+# or old tradition (a.format(b))
+letter="My Name is{} and I am {} years old"
+age="18"
+name="abc"
+print(letter.format(name,age));
+# format can do more things like floating will be upto 2 decimal
+
+# DocString
+def square(n):
+    '''Return the square of a number'''
+    return n**2
+print(square(5));
+
+print(square.__doc__)#It returns the docstring means comment of the function
+# To document our code Only work after defination of function
+
+
