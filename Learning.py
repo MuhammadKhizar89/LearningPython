@@ -1,6 +1,6 @@
-print("Hi");
-a=complex(8,2)
-print (a)
+# print("Hi");
+# a=complex(8,2)
+# print (a)
 #mutable ->Changes---->List
 
 #immutable ->Doesn't--->tuple
@@ -21,11 +21,29 @@ print (a)
 # num2=int(input("Enter Number:"));
 # print("Addition",num1+num2);
 
-abc="hello" 
-new=abc[0:2] # 2 index sy peechy peechy
-print (new)
+# abc="hello" 
+# new=abc[0:2] # 2 index sy peechy peechy
+# print (new)
 
-srtipp="!!!hellom!1!2!!"
-print(srtipp.lstrip("!"))
-print(srtipp.rstrip("!"))
-print(srtipp.strip("!"))
+# srtipp="!!!hellom!1!2!!"
+# print(srtipp.lstrip("!"))
+# print(srtipp.rstrip("!"))
+# print(srtipp.strip("!"))
+# i = "shery"
+# for k in range(len(i)):
+#     print(i[k])
+
+
+
+# List
+Marks=[2,3,"wq"]
+print (Marks);
+
+if(Marks[2]=="wq"):
+    print("wq")
+
+if 2 in Marks:
+    print("Present")
+
+if "w" in "wq":
+    print("Present");    
