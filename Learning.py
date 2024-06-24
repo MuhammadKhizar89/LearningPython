@@ -194,4 +194,9 @@
 # # Agr break lga dain loop may tou else ni print hoga
 
 ### Seek and tell are like pointers in file that tell moves pointer to start from reading
+# with open('file.txt','r') as f:
+#     print(f.seek(3))
+#     print(f.read())
+
+#truncate to fix bytes in file
 
