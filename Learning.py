@@ -200,3 +200,29 @@
 
 #truncate to fix bytes in file
 
+
+# #lambda
+
+# double =lambda x:x*2
+# print(double(5))
+
+# # MAP
+# l=[1,2,4,6,4,3]
+# newl=list(map(lambda x:x*2,l))  
+# print(newl)
+# # Filter
+# def filter_function(x):
+#     return x>4;
+
+# newl=list(filter(filter_function,l))
+# print(newl)
+
+# # Reduce 
+# #it only sum all the values
+
+
+# is vs ==
+a=3;
+b=3;
+print(a is b); # exact location of object in memory
+print(a==b);  # value
