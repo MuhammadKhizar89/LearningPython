@@ -122,4 +122,31 @@ print(square(5));
 print(square.__doc__)#It returns the docstring means comment of the function
 # To document our code Only work after defination of function
 
+#Recursion
+def fab(n):
+    if(n==0):
+        return 0;
+    if(n==1):
+        return 1;
+    return fab(n-1)+fab(n-2);
 
+for a in range(6):
+ print(fab(a));
+
+#  Sets
+s={1,2,3,3,"hello","hello"}
+print(s);
+# No gaurantee of order
+ab=set(); #to make empty set if we do this{} then first it thinks it is dictionary
+print(type(s),type(ab))
+
+for value in s:
+    print(value);
+s2={"hello","World"}
+print(s.union(s2));
+print(s);
+s.update(s2);
+print(s);
+s.intersection_update(s2); #update will the orignal one
+print(s)
+s.symmetric_difference(s2);# for values that are not comn in each others
