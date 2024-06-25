@@ -221,8 +221,61 @@
 # #it only sum all the values
 
 
-# is vs ==
-a=3;
-b=3;
-print(a is b); # exact location of object in memory
-print(a==b);  # value
+# # is vs ==
+# a=3;
+# b=3;
+# print(a is b); # exact location of object in memory
+# print(a==b);  # value
+
+# # Classes
+# class Person:
+#     def __init__(self,name,age): #Constructor
+#         self.name=name
+#         self.age=age
+
+# p1=Person("John",18)
+# print(p1.name,p1.age)
+
+# # Decorator
+
+# def greet(fx):
+#     def abc():
+#         print("hello")
+#         fx()
+#         print("bye")
+#     return abc  
+
+# @greet
+# def hello():
+#     print("Hi")
+
+# hello();
+# # *args for many arguments,**kwargs for dictionary 
+
+# # Getter and setter
+
+# class Person:
+#     def __init__(self,name,age): #Constructor
+#         self._name=name
+#         self._age=age
+#     @property
+#     def name(self):
+#         return self._name
+#     @name.setter
+#     def name(self,name):
+#         self._name=name
+#     @property
+#     def age(self):
+#         return self._age
+#     @age.setter
+#     def age(self,age):
+#         self._age=age
+# p1=Person("John",18)
+# print(p1.name);# Yani ab hm aik method use kr rhy hn likin lg  rha attribute hy encapsulation
+# print(p1.age);
+# p1.age=19 #setter
+
+
+# __abc->private member  to access _classname__abc
+# _abc->protected member
+# abc->public member
