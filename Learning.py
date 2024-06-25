@@ -279,3 +279,11 @@
 # __abc->private member  to access _classname__abc
 # _abc->protected member
 # abc->public member
+
+
+# Static Method
+# we can make any method in class
+# without sending self  
+# we use @staticmethod to make any func
+# we use @classmethod to change class atrribute for every object notonly one
+# or we can make a alternative constructor using @classmethod
