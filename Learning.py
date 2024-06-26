@@ -347,13 +347,77 @@
 # shutil.move->move folder
 # shutil.rmtree->delete folder
 
-lis=["ayan","jazib","Ali"] 
-import win32com.client as wincom # type: ignore
-import time
-speak = wincom.Dispatch("SAPI.SpVoice")
-for i in lis:
-    text = f"{i} how are you"
-    speak.Speak(text)
-time.sleep(1) 
-text = "byby"
-speak.Speak(text)
+#Exercise 9
+# lis=["ayan","jazib","Ali"] 
+# import win32com.client as wincom # type: ignore
+# import time
+# speak = wincom.Dispatch("SAPI.SpVoice")
+# for i in lis:
+#     text = f"{i} how are you"
+#     speak.Speak(text)
+# time.sleep(1) 
+# text = "byby"
+# speak.Speak(text)
+
+# import requests
+# response=requests.get("https://www.codewithharry.com")
+# print(response.text);
+
+# beautifulsoup for->beautifying the html code or we can find heading and more things that is in
+# html code
+
+# # Generator run time generate kry ga yani store ni kray ga memory waste ni ho gi
+# def abc():
+#  for i in range(5):
+#   yield i
+
+# gen=abc()
+# or print(next(gen))
+# for j in gen:
+#  print(j)
+
+# # jb zada kaam ho ga hr value kay liye to hm jis ki zarurat ho gi us ko generate kra lain gy taky memory waste na ho
+
+# Function cashing
+# yani agr aik kaam value 2 kay liye function kr rha hy tou ab vo yaad rkhy ga yani dubara vo kaam ni kry ga taky time bach sky
+# from functools import lru_cache
+# import time
+# @lru_cache(maxsize=None)
+# def fx(n):
+#  time.sleep(2)
+#  return n*5;
+
+
+# print(fx(30))
+# print("done for 30")
+# print(fx(2))
+# print("done for 2")
+# print(fx(30))
+# print("done for 30")
+# print(fx(2))
+# print("done for 2")
+
+# # Exercise 10
+# import asyncio
+# import time
+# from desktop_notifier import DesktopNotifier
+# notifier = DesktopNotifier()
+# async def main():
+#     n = await notifier.send(title="Drink Water", message="Sent from Khizar")
+#     await asyncio.sleep(5)  # wait a bit before clearing notification
+#     await notifier.clear(n)  # removes the notification
+#     await notifier.clear_all()  # removes all notifications for this app
+
+
+# x=time.localtime().tm_hour
+# while(True):    
+#  if(x!=time.localtime().tm_hour):
+#     asyncio.run(main())
+#     x=time.localtime().tm_hour;
+
+
+#Regular Expression simple built in func to find things
+# import re
+# txt="The rain in Spain"
+# x=re.search("ai",txt)
+# print(x)  #output-><re.Match object; span=(3, 5), match='ai'>
