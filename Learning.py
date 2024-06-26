@@ -329,12 +329,31 @@
 
 
 
-# Warlus Operator
-# to assign a value in expression
-a=False; 
-if(a:=True):
-    print(a);
+# # Warlus Operator
+# # to assign a value in expression
+# a=False; 
+# if(a:=True):
+#     print(a);
 
-numbers=[1,2,3,4,5];
-while(n:=len(numbers))>0:
-    print(numbers.pop())
+# numbers=[1,2,3,4,5];
+# while(n:=len(numbers))>0:
+#     print(numbers.pop())
+
+# Shutil have may things like to copy one file
+# import shutil
+# shutil.copy("Learning.py","Learning2.py");
+
+# shutil.copytree->copy whole folder
+# shutil.move->move folder
+# shutil.rmtree->delete folder
+
+lis=["ayan","jazib","Ali"] 
+import win32com.client as wincom # type: ignore
+import time
+speak = wincom.Dispatch("SAPI.SpVoice")
+for i in lis:
+    text = f"{i} how are you"
+    speak.Speak(text)
+time.sleep(1) 
+text = "byby"
+speak.Speak(text)
