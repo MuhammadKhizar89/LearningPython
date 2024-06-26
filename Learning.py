@@ -319,3 +319,22 @@
 #     os.rename(f"Images/{i}",f"Images/{k}.png")
 #     k=k+1;
 
+# # Operator Overloading
+# #addition  
+# v1=Vector(1,2)
+# v2=Vector(3,4)
+# v1+v2
+# # then we make __add__(self,x) x is second v2 and self is first v1 and customize the addition
+# # more methods here to overload see documentation
+
+
+
+# Warlus Operator
+# to assign a value in expression
+a=False; 
+if(a:=True):
+    print(a);
+
+numbers=[1,2,3,4,5];
+while(n:=len(numbers))>0:
+    print(numbers.pop())
