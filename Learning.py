@@ -421,3 +421,33 @@
 # txt="The rain in Spain"
 # x=re.search("ai",txt)
 # print(x)  #output-><re.Match object; span=(3, 5), match='ai'>
+
+# Async Io ->like javascript async func and await
+
+# # Multi Threading in Python
+# jb hmy rukny ki zarurat ni hy i want to call 10 function at a time 
+# jesy async use hota hy kay vo bhi aik sath kaam krny ko khta hy taky baqi kaam hoty rhain
+
+# import threading
+# import time
+
+# def print_numbers():
+#     for i in range(5):
+#         print(i)
+#         time.sleep(1)
+
+# def print_letters():
+#     for letter in 'abcde':
+#         print(letter)
+#         time.sleep(1)
+
+# t1 = threading.Thread(target=print_numbers)
+# t2 = threading.Thread(target=print_letters)
+
+# t1.start()
+# t2.start()
+
+# t1.join()
+# t2.join()
+
+# MultiProcessing same hi lg rha hy
