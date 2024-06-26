@@ -285,5 +285,37 @@
 # we can make any method in class
 # without sending self  
 # we use @staticmethod to make any func
+
+
 # we use @classmethod to change class atrribute for every object notonly one
 # or we can make a alternative constructor using @classmethod
+
+
+# dir __dict__  help()
+
+# dir
+# x=[1,2,3]
+# print(dir(x))#To print methods and of list 
+# print(x.__add__)
+
+# dict --> if we use object.__dict__ it will print all the attributes as dictionary of that object
+# help() it will print all the methods and class of that object
+
+# Super to call parent function
+# to cal parent constructor use super().__init__(name,age)
+
+# Magic/Dunder methods
+# __str__ method if i write printobject it will print whole object
+# i will call str but method name is __str__ so this is magic method
+
+# __call__ method can be call as object() 
+
+# #Exercise 7
+# import os
+# # os.rename("Images/abc.txt","Images/1.txt")
+# k=1
+# files=os.listdir("Images")
+# for i in files:
+#     os.rename(f"Images/{i}",f"Images/{k}.png")
+#     k=k+1;
+
