@@ -450,4 +450,175 @@
 # t1.join()
 # t2.join()
 
-# MultiProcessing same hi lg rha hy
+# # MultiProcessing same hi lg rha hy
+# import time
+# import random
+# from scholarly import scholarly, ProxyGenerator
+
+# def format_bpp_citation(publication):
+#     try:
+#         authors = ', '.join(author for author in publication['bib']['author'])
+#     except KeyError:
+#         authors = "Unknown"
+#     try:
+#         title = publication['bib']['title']
+#     except KeyError:
+#         title = "No title available"
+#     try:
+#         journal = publication['bib'].get('journal', 'No journal available')
+#     except KeyError:
+#         journal = "No journal available"
+#     try:
+#         year = publication['bib'].get('pub_year', 'No year available')
+#     except KeyError:
+#         year = "No year available"
+#     try:
+#         volume = publication['bib'].get('volume', 'No volume available')
+#     except KeyError:
+#         volume = "No volume available"
+#     try:
+#         pages = publication['bib'].get('pages', 'No pages available')
+#     except KeyError:
+#         pages = "No pages available"
+    
+#     # Formatting the citation in BPP style
+#     return f"{authors} ({year}). {title}. {journal}, {volume}, {pages}."
+
+# def get_first_citation(query, max_retries=5, delay=5):
+#     pg = ProxyGenerator()
+#     pg.FreeProxies()
+#     scholarly.use_proxy(pg)
+    
+#     for attempt in range(max_retries):
+#         try:
+#             search_query = scholarly.search_pubs(query)
+#             first_result = next(search_query, None)
+            
+#             if first_result:
+#                 # Debug print to inspect the structure
+#                 # print(first_result)
+#                 citation = format_bpp_citation(first_result)
+#                 return citation
+#             else:
+#                 return "No results found."
+#         except Exception as e:
+#             print(f"Attempt {attempt + 1} failed: {e}")
+#             time.sleep(delay + random.uniform(0, 3))  # Adding some randomness to delay
+
+#     return "Failed to retrieve results after multiple attempts."
+
+# # Example usage
+# query = "Mars is an international manufacturer and marketer of confection and food products with some of its popular brands including M&M’s, Snickers, and Twix"
+# citation = get_first_citation(query)
+# print(citation)
+from docx import Document
+import nltk
+import random
+import time
+from scholarly import scholarly, ProxyGenerator
+
+nltk.download('punkt')  # Ensure NLTK tokenizer is downloaded for sentence tokenization
+
+def extract_sentences(doc_path):
+    doc = Document(doc_path)
+    sentences = []
+    for para in doc.paragraphs:
+        if para.text.strip():  # Ensure paragraph is not empty
+            para_sentences = nltk.sent_tokenize(para.text.strip())
+            if len(para_sentences) > 2:  # For long paragraphs
+                first_sentence = para_sentences[0]
+                middle_sentence = para_sentences[len(para_sentences) // 2]
+                last_sentence = para_sentences[-1]
+                sentences.append((first_sentence, middle_sentence, last_sentence))
+            else:  # For short paragraphs
+                first_sentence = para_sentences[0]
+                sentences.append((first_sentence,))
+    return sentences
+
+def format_bpp_citation(publication):
+    try:
+        authors = ', '.join(author for author in publication['bib']['author'])
+    except KeyError:
+        authors = "Unknown"
+    try:
+        title = publication['bib']['title']
+    except KeyError:
+        title = "No title available"
+    try:
+        journal = publication['bib'].get('journal', 'No journal available')
+    except KeyError:
+        journal = "No journal available"
+    try:
+        year = publication['bib'].get('pub_year', 'No year available')
+    except KeyError:
+        year = "No year available"
+    try:
+        volume = publication['bib'].get('volume', 'No volume available')
+    except KeyError:
+        volume = "No volume available"
+    try:
+        pages = publication['bib'].get('pages', 'No pages available')
+    except KeyError:
+        pages = "No pages available"
+    # Formatting the citation in BPP style
+    print(f"{authors} ({year}). {title}. {journal}, {volume}, {pages}.")    
+    return f"{authors} ({year}). {title}. {journal}, {volume}, {pages}."
+
+def get_first_citation(query, max_retries=5, delay=5):
+    pg = ProxyGenerator()
+    pg.FreeProxies()
+    scholarly.use_proxy(pg)
+    
+    for attempt in range(max_retries):
+        try:
+            print(query)
+            search_query = scholarly.search_pubs(query)
+            first_result = next(search_query, None)
+            if first_result:
+                return first_result  # Return the publication object
+            else:
+                return None  # Return None if no results found
+        except Exception as e:
+            print(f"Attempt {attempt + 1} failed: {e}")
+            time.sleep(delay + random.uniform(0, 3))  # Adding some randomness to delay
+
+    return None  # Return None if failed to retrieve results after multiple attempts
+
+# Function to update paragraphs with citations
+def update_docx_with_citations(doc_path, sentences, citations):
+    doc = Document(doc_path)
+    
+    for para, sentence_group, citation_group in zip(doc.paragraphs, sentences, citations):
+        if para.text.strip():  # Ensure paragraph is not empty
+            para_text = para.text.strip()
+            para_sentences = nltk.sent_tokenize(para_text)
+            new_para_text = para_sentences.copy()
+            for i, sentence in enumerate(sentence_group):
+                if sentence in para_sentences:
+                    sentence_index = para_sentences.index(sentence)
+                    new_para_text[sentence_index] += f". {citation_group[i]}"
+            para.clear()  # Clear existing content
+            for sentence in new_para_text:
+                para.add_run(sentence + " ")
+    doc.save(doc_path)
+
+# Example usage
+doc_path = 'path_to_your_document.docx'  # Replace with your actual document path
+sentences = extract_sentences(doc_path)
+
+citations = []
+for sentence_group in sentences:
+    group_citations = []
+    for sentence in sentence_group:
+        query = sentence
+        publication = get_first_citation(query)
+        if publication:
+            citation = format_bpp_citation(publication)
+            group_citations.append(citation)  # Store formatted citation
+        else:
+            group_citations.append("")  # Handle cases where no citation is found
+    citations.append(group_citations)
+
+# Update DOCX file with citations
+update_docx_with_citations(doc_path, sentences, citations);
+print(f"Citations have been inserted into '{doc_path}' successfully.");
